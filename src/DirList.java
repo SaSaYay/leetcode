@@ -5,19 +5,23 @@ import java.util.regex.*;
 import java.io.*;
 import java.util.*;
 
+/**
+ * @author sasayaya
+ */
 public class DirList {
   public static void main(String[] args) {
     File path = new File(".");
     String[] list;
-    if(args.length == 0)
-
-
+    if(args.length == 0){
       list = path.list();
-    else
+    } else{
       list = path.list(new DirFilter(args[0]));
+    }
+
     Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
-    for(String dirItem : list)
+    for(String dirItem : list){
       System.out.println(dirItem);
+    }
   }
 }
 
@@ -26,12 +30,8 @@ class DirFilter implements FilenameFilter {
   public DirFilter(String regex) {
     pattern = Pattern.compile(regex);
   }
+  @Override
   public boolean accept(File dir, String name) {
     return pattern.matcher(name).matches();
   }
-} /* Output:
-DirectoryDemo.java
-DirList.java
-DirList2.java
-DirList3.java
-*///:~
+}

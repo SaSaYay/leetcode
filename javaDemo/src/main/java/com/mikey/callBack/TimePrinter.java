@@ -7,6 +7,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 import javax.swing.*;
 
 /**
@@ -19,28 +20,35 @@ public class TimePrinter implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("the time is " + Instant.ofEpochMilli(e.getWhen()));
         Toolkit.getDefaultToolkit().beep();
+
     }
 
     public static void main(String[] args) throws InterruptedException {
         TimePrinter listener = new TimePrinter();
-        Timer timer = new Timer(1000, listener); // 正确的初始化 Timer
-        timer.start(); // 启动定时器
+        // 正确的初始化 Timer
+//        Timer timer = new Timer(1000, listener);
+//        timer.start(); // 启动定时器
+//
+//        JOptionPane.showMessageDialog(null,"Quit");
+//        Thread.sleep(10000000);
+//        System.exit(0);
+//
+//        ArrayList<String> list = new ArrayList<>();
+//        list.add("1");
+//        list.add("1");
+//        list.add("1");
+//        list.add("1");
+//        list.add("1");
+//        list.add("1");
+//        System.out.println(Arrays.toString(list.toArray()));
+//
+//        String[] strings = list.toArray(new String[100]);
+//        System.out.println(Arrays.toString(strings));
 
-        JOptionPane.showMessageDialog(null,"Quit");
-        Thread.sleep(10000000);
-        System.exit(0);
 
-        ArrayList<String> list = new ArrayList<>();
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        System.out.println(Arrays.toString(list.toArray()));
-
-        String[] strings = list.toArray(new String[100]);
-        System.out.println(Arrays.toString(strings));
+        Random random = new Random();
+        int i = random.nextInt();
+        System.out.println(i);
     }
 
 }
