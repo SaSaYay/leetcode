@@ -22,7 +22,6 @@ public class Main {
 //        System.out.printf("%d你好%s",name,age);
         String property = System.getProperty("user.dir");
         System.out.println(property);
-        LocalDate
 
 
     }

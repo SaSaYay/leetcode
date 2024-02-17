@@ -1,5 +1,8 @@
 package com.mikey;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Instant;
@@ -30,15 +33,6 @@ public class stackTrace {
         }
         System.out.println("阶乘结果是:" + r);
         ActionListener listener = (ActionEvent event)-> Instant.ofEpochMilli(event.getWhen());
-//        ActionListener listener = new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent event) {
-//                Instant instant = Instant.ofEpochMilli(event.getWhen());
-//                // 在这里执行你的操作
-//            }
-//        };
         return r;
-
-
     }
 }

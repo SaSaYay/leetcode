@@ -16,7 +16,7 @@ import javax.swing.*;
  * @author sasayaya
  * @create 2023/10/10 23:22
  */
-public class Main {
+public class testMain {
     public static void main(String[] args) {
 
         LocalDate now = LocalDate.now();

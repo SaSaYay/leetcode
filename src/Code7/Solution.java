@@ -1,13 +1,19 @@
 package Code7;
 
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
+
 /**
  * @author sasayaya
  * @create 2023/1/4 1:47
  */
 class Solution {
     public static void main(String[] args) {
-        int reverse = Solution.reverse(-2147483648);
-        System.out.println(reverse);
+//        int reverse = Solution.reverse(-2147483648);
+//        System.out.println(reverse);
+        Stream<Double> generate = Stream.generate(Math::random);
+        long count = generate.count();
+         System.out.println(count);
     }
     public static int reverse(int x) {
         int res = 0;
