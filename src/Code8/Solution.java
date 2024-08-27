@@ -8,56 +8,29 @@ import java.time.LocalDate;
  */
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(Solution.myAtoi("+1"));
+        System.out.println(Solution.myAtoi("2147483647"));
     }
+
     public static int myAtoi(String s) {
-        int i = 0;
-        int sym = 1;
-        if (s == null || s == ""){
+        char[] chars = s.trim().toCharArray();
+        if (chars.length == 0) {
             return 0;
         }
-//        去掉前导空格
-        for ( ;i < s.length(); i++) {
-            if (s.charAt(i) != ' '){
+        int bndry = Integer.MAX_VALUE / 10;
+        int res = 0;
+        int sign = 1;
+        if (chars[0] == '-') {
+            sign = -1;
+        }
+        for (char c : chars) {
+            if (c < '0' || c > '9') {
                 break;
             }
-        }
-//        去掉无关字符
-        for ( ;i < s.length(); i++) {
-            if (s.charAt(i)=='-'){
-                sym = -1;
-            } else if (s.charAt(i)=='+'){
-                break;
-            } else if (s.charAt(i)>='0'&&s.charAt(i)<='9'){
-                break;
-            }else if (s.charAt(i)>'9'||s.charAt(i)<'0'){
-                return 0;
+            if (res > bndry || (res == bndry && c > '7')) {
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
+            res = res * 10 + c - '0';
         }
-        //计算数的大小
-        String res = "";
-        for ( ; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '.'){
-                break;
-            }
-            if (c>'9'||c<='0'){
-                continue;
-            }
-            res = res+c;
-        }
-        if (res == null || res == ""){
-            return 0;
-        }
-//        考虑超出范围的情况
-        Long aLong = Long.valueOf(res)*sym;
-        Long aLong1 = Long.valueOf(Integer.MAX_VALUE);
-        Long aLong2 = Long.valueOf(Integer.MIN_VALUE);
-        if (aLong>aLong1){
-            return Integer.MAX_VALUE;
-        }else if (aLong < aLong2){
-            return Integer.MIN_VALUE;
-        }
-        return Integer.valueOf(res)*sym;
+        return sign * res;
     }
 }
